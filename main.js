@@ -142,10 +142,11 @@ $(function () {
 
      function calculation_x() {
 
+        let lew = Number(document.getElementById("level").innerHTML);
         document.getElementById("winner").innerHTML = "Победа крестиков";
-        win_x += 1;
+        win_x = lew + 1;
         document.getElementById("win_x").innerHTML = win_x;
-
+console.log(lew);
         let level = win_x;
          ajax(level);
         if(level >= 1){
@@ -157,12 +158,10 @@ $(function () {
     function calculation_0() {
         document.getElementById("winner").innerHTML = "Победа ноликов";
         win_0 += 1;
-
-
         document.getElementById("win_0").innerHTML = win_0;
-
-        if(win_x > 1){
-            win_x -= 1;
+        let lew = Number(document.getElementById("level").innerHTML);
+        if(lew > 1){
+            win_x = lew - 1;
             let level = win_x;
             ajax(level);
         }
@@ -172,7 +171,7 @@ $(function () {
 
     function ajax(level) {
         let hash = document.getElementById("hash").innerHTML;
-        document.getElementById("level").innerHTML = "Ваш уровень: " + level;
+        document.getElementById("level").innerHTML = level;
 
         $(function() {
             $.ajax({

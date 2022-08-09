@@ -30,7 +30,7 @@ $user = new Db($hash);
 </head>
 <body>
 <h1 id="content"></h1>
-<h2 id="level">Ваш уровень: <?php echo $user->level ?></h2>
+<h2>Ваш уровень:</h2><h2 id="level"><?php echo $user->level ?></h2>
 <h6 id="hash" hidden><?php echo $user->hash ?></h6>
 <h1 id="ans" hidden></h1>
 <table>
