@@ -9,11 +9,16 @@ $(function () {
     // если клик, есть отправляем данные в bot.php
     for (let i = 0; i < 9; i++) {
         let id = i;
+
+
         document.getElementById('id_' + i).addEventListener('click', function () {
             if (document.getElementById("winner").innerHTML !== "Победа крестиков" &&
                 document.getElementById("winner").innerHTML !== "Победа ноликов" &&
-                document.getElementById("winner").innerHTML !== "Ничья") {
-                myBot(id);
+                document.getElementById("winner").innerHTML !== "Ничья" ) {
+
+                if(id_button[id] !== "1"){
+                    myBot(id);
+                }
             }
         });
     }
@@ -62,7 +67,7 @@ $(function () {
         allBlocks = document.getElementsByClassName("block");
         if (count === 5) {
             document.getElementById("winner").innerHTML = "Ничья";
-            window.stop()
+            window.stop();
         }
         // Победили крестики
         if ((allBlocks[0].innerHTML == "x" & allBlocks[1].innerHTML == "x" & allBlocks[2].innerHTML == "x") ||
@@ -144,10 +149,11 @@ $(function () {
 
         let lew = Number(document.getElementById("level").innerHTML);
         document.getElementById("winner").innerHTML = "Победа крестиков";
-        win_x = lew + 1;
+        lew += 1;
+        win_x += 1;
         document.getElementById("win_x").innerHTML = win_x;
-console.log(lew);
-        let level = win_x;
+
+        let level = lew;
          ajax(level);
         if(level >= 1){
             ajax(level);
@@ -161,8 +167,9 @@ console.log(lew);
         document.getElementById("win_0").innerHTML = win_0;
         let lew = Number(document.getElementById("level").innerHTML);
         if(lew > 1){
-            win_x = lew - 1;
-            let level = win_x;
+            lew -= 1;
+            win_x -= 1;
+            let level = lew;
             ajax(level);
         }
         alert('0');
